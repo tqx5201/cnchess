@@ -1,81 +1,60 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>中国象棋 - in html5 by itlwei</title>
-  </head>
+<head>
+<meta charset="gb2312">
+<title>�й����� in html5</title>
+<!--
+/**
+ * ChinaChess - in html5
+ * http://www.jnzo.com/chess/
+ * @ author һҶ����
+ * @ mail itlwei@163.com
+ * @ QQ 28701884
+ */
+-->
+<link href="css/chess.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="box" id="box">
+	<div class="chess_left">
+		<canvas id="chess">�Բ��������������֧��HTML5���������������IE9��firefox���߹ȸ��������</canvas>
+		<audio src="audio/click.wav" id="clickAudio" preload="auto"></audio>
+		<!--<audio src="audio/check.wav" id="checkAudio" preload="auto"></audio>-->
+		<audio src="audio/select.wav" id="selectAudio" preload="auto"></audio>
+		<div>
+			<div class="bn_box" id="bnBox">
+				<input type="button" name="offensivePlay" id="tyroPlay" value="����ˮƽ" />
+				<input type="button" name="offensivePlay" id="superPlay" value="�м�ˮƽ" />
+                <!--<input type="button" name="button" id="" value="��ʦˮƽ" disabled />
+				
+			<input type="button" name="offensivePlay" id="offensivePlay" value="���ֿ�ʼ" />
+			<input type="button" name="defensivePlay" id="defensivePlay" value="���ֿ�ʼ" />
+			-->
+				<input type="button" name="regret" id="regretBn" value="����" />
+				<input type="button" name="billBn" id="billBn" value="����" class="bn_box" />
+				<input type="button" name="stypeBn" id="stypeBn" value="����" />
+				<input type="button" name="download" id="download" value="Դ������" onClick="window.open('https://github.com/itlwei/ChinaChess-html5')" />
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="chess_right" id="chessRight">
+		<select name="billList" id="billList">
+		</select>
+		<ol id="billBox" class="bill_box">
+		</ol>
+	</div>
+	<div id="moveInfo" class="move_info"> </div>
+</div>
+<script type="text/javascript" src="js/common.js"></script> 
+<script type="text/javascript" src="js/play.js"></script> 
+<script type="text/javascript" src="js/AI.js"></script> 
+<script type="text/javascript" src="js/bill.js"></script> 
+<script type="text/javascript" src="js/gambit.js"></script>
+<div style="display:none">
+<script src="http://s25.cnzz.com/stat.php?id=98945&web_id=98945" language="JavaScript"></script>
+</div>
 
-  <body>
-    <div id="container">
-      <div class="inner">
-
-        <header>
-          <h1>中国象棋 - in html5</h1>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/itlwei/chess/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/itlwei/chess/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/itlwei/chess" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>
-<a name="%E4%B8%AD%E5%9B%BD%E8%B1%A1%E6%A3%8B---in-html5" class="anchor" href="#%E4%B8%AD%E5%9B%BD%E8%B1%A1%E6%A3%8B---in-html5"><span class="octicon octicon-link"></span></a>中国象棋 - in html5</h1>
-
-<p>作者：一叶孤舟<br>
-联系：<a href="mailto:itlwei@163.com">itlwei@163.com</a>  QQ:28701884<br>
-Demo：<a href="http://www.jnzo.com/chess/">http://www.jnzo.com/chess/</a></p>
-
-<p>中国象棋 - in html5是一款使用html5 canvas开发的开源小游戏，不依赖任何类库，不依赖任何后台程序，全部原生Javascript进行AI计算，欢迎广大业内同行多多交流指正，共同完善。</p>
-
-<h2>
-<a name="%E7%89%B9%E7%82%B9" class="anchor" href="#%E7%89%B9%E7%82%B9"><span class="octicon octicon-link"></span></a>特点</h2>
-
-<ul>
-<li>全部使用Javascript完成AI人工智能计算，不依赖任何后台程序</li>
-<li>不依赖任何类库，全部原生Javascript，使用html5 canvas.</li>
-<li>实现中不涉及任何浏览器特性，所以不存在浏览器兼容性问题.</li>
-<li>代码结构极其简洁明了，你可以轻易的阅读，修改成自己版本.</li>
-</ul><h2>
-<a name="change-log" class="anchor" href="#change-log"><span class="octicon octicon-link"></span></a>Change Log</h2>
-
-<h3>
-<a name="v103" class="anchor" href="#v103"><span class="octicon octicon-link"></span></a>v1.0.3</h3>
-
-<ul>
-<li>增加历史表，提高AI计算效率</li>
-</ul><h3>
-<a name="v102" class="anchor" href="#v102"><span class="octicon octicon-link"></span></a>v1.0.2</h3>
-
-<ul>
-<li>修复了AI计算过深的资源耗尽问题</li>
-</ul><h3>
-<a name="v101" class="anchor" href="#v101"><span class="octicon octicon-link"></span></a>v1.0.1</h3>
-
-<ul>
-<li>修复了一些情况下悔棋出错的问题</li>
-<li>修复了长将不死的问题</li>
-</ul>
-        </section>
-
-        <footer>
-          中国象棋 - in html5 is maintained by <a href="https://github.com/itlwei">itlwei</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
-      </div>
-    </div>
-  </body>
+</body>
 </html>
